@@ -1,0 +1,72 @@
+@use 'sass-color-custom-properties' as colorprops
+
+.Button
+	$hover: var(--Button_hovered)
+	$active: var(--Button_active)
+
+	display: flex
+	justify-content: center
+	align-items: center
+	text-align: center
+	font-size: var(--font-size)
+	background: none
+	color: colorprops.use(fg)
+	cursor: pointer
+
+	&:hover
+		--Button_hovered: var(--space)
+
+	&_active
+		--Button_active: var(--space)
+
+	&_style
+
+		&_flat
+			--Button_style_hoverAlpha: #{$hover} .75
+			--Button_style_activeAlpha: #{$active} 1
+			$alpha: calc(var(--Button_style_hoverAlpha, 0) + var(--Button_style_activeAlpha, 0))
+
+			background-color: colorprops.use(active-soft, (a: $alpha))
+			color: colorprops.use(clickable)
+			transition: background-color calc(.3s * var(--speed))
+
+		&_backgrounded
+			$color: colorprops.use(bg-2)
+			--Button_style_hoverColor: #{$hover} #{colorprops.use(active-soft, (a: .75))}
+			--Button_style_activeColor: #{$active} #{colorprops.use(active-soft)}
+
+			background-color: var(--Button_style_hoverColor, var(--Button_style_activeColor, $color))
+			transition: background-color calc(.2s * var(--speed))
+
+		&_text
+			--Button_style_activeColor: #{$hover} #{colorprops.use(active)}
+
+			display: inline
+			color: var(--Button_style_activeColor, #{colorprops.use(clickable)})
+			transition: color calc(.3s * var(--speed))
+
+	&_padding
+
+		&_tiny
+			padding: 5px
+
+		&_medium
+			padding: 10px 15px
+
+		&_big
+			padding: 15px 25px
+
+	&_alignContent
+
+		&_stretch
+			display: grid
+			justify-content: stretch
+			align-items: stretch
+
+		&_left
+			justify-content: flex-start
+			text-align: left
+
+		&_right
+			justify-content: flex-end
+			text-align: right

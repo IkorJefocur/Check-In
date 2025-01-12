@@ -1,0 +1,25 @@
+@use 'sass-color-custom-properties' as colorprops
+
+.StudentControl-Status
+	--StudentControl-Status_color: #{colorprops.use(offline)}
+	--StudentControl-Status_textColor: #{colorprops.use(offline, (s: .75))}
+
+	grid-area: status
+	justify-self: start
+	display: flex
+	align-items: center
+	margin: 10px 0
+	font-weight: 700
+	color: var(--StudentControl-Status_textColor)
+
+	&:before
+		content: ""
+		width: 20px
+		height: 20px
+		margin-right: 10px
+		border-radius: 100%
+		background-color: var(--StudentControl-Status_color)
+
+	&_onCampus
+		--StudentControl-Status_color: #{colorprops.use(online)}
+		--StudentControl-Status_textColor: #{colorprops.use(online, (s: .7))}

@@ -1,0 +1,41 @@
+@use 'sass-color-custom-properties' as colorprops
+
+.Popup
+	$free-space: var(--Popup_freeSpace, 20px)
+	$shift-x: var(--Popup_shiftX, 0px)
+	$shift-y: var(--Popup_shiftY, 0px)
+
+	$m-top: calc($free-space - $shift-y)
+	$m-right: calc($free-space + $shift-x)
+	$m-bottom: calc($free-space + $shift-y)
+	$m-left: calc($free-space - $shift-x)
+
+	min-width: .1px
+	min-height: .1px
+	padding: 20px
+	margin: $m-top $m-right $m-bottom $m-left
+	border-radius: 15px
+	opacity: 0
+	box-shadow: 0 0 5px 3px colorprops.use(shadow, (a: .3))
+	background-color: colorprops.use(bg)
+	transition-property: opacity, transform
+	transition-duration: calc(.5s * var(--speed))
+
+	&_active
+		opacity: 1
+		transform: translate($shift-x, $shift-y)
+		pointer-events: auto
+
+	&_side
+
+		&_top
+			--Popup_shiftY: -20px
+
+		&_right
+			--Popup_shiftX: 20px
+
+		&_bottom
+			--Popup_shiftY: 20px
+
+		&_left
+			--Popup_shiftX: -20px

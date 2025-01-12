@@ -1,0 +1,23 @@
+@use 'sass-color-custom-properties' as colorprops;
+
+@mixin App {
+	@include colorprops.def((
+		bg: #FFFFFF,
+		bg-1: #EAEAEA,
+		bg-2: #D8D8D8,
+		fg: #101010,
+		fg-1: #272727,
+		fg-2: #444444,
+		fg-3: #676769,
+		shadow: #131319,
+		softbreak: #999999,
+		online: #89D148,
+		offline: #D3353E,
+		accent: #2E9DB5,
+		active: #3A76E0,
+		active-soft: #C1D1D3,
+		clickable: #264680,
+		dynamic-on: #4C94AD,
+		dynamic-off: #B44A39
+	));
+}

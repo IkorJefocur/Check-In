@@ -1,0 +1,14 @@
+@use 'sass-color-custom-properties' as colorprops
+
+.Layout-Column
+	display: flex
+	flex-direction: column
+	padding: 0 5%
+	border: solid colorprops.use(bg-2)
+	border-width: 0 1px
+
+	&:first-child
+		border-left: none
+
+	&:last-child
+		border-right: none

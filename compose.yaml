@@ -1,0 +1,28 @@
+name: check_in
+services:
+
+  app:
+    build:
+      context: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_HOST: check_in-postgres-1
+      DB_NAME: check_in
+      DB_USER: appuser
+      DB_PASSWORD: password
+    ports:
+      - ${PORT}:3000
+
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: check_in
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./documents:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: pg_isready -d check_in -U appuser
+      start_period: 60s

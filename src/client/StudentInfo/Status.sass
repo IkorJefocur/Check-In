@@ -1,0 +1,11 @@
+@use 'sass-color-custom-properties' as colorprops
+
+.StudentInfo-Status
+	flex: none
+	width: 15px
+	height: 15px
+	border-radius: 100%
+	background-color: colorprops.use(offline)
+
+	&_onCampus
+		background-color: colorprops.use(online)

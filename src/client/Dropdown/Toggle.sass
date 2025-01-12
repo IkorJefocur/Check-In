@@ -1,0 +1,40 @@
+@use 'sass-color-custom-properties' as colorprops
+
+.Dropdown-Toggle
+	--Dropdown-Toggle_color: #{colorprops.use(bg-2)}
+	--Dropdown-Toggle_arrowRotate: 135deg
+	$color: var(--Dropdown-Toggle_color)
+	$arrow-rotate: var(--Dropdown-Toggle_arrowRotate)
+
+	display: flex
+	justify-content: space-between
+	align-items: center
+	padding: 0 10px
+	font-size: calc(var(--font-size) * 1.2)
+	background-color: $color
+	color: colorprops.use(fg-1)
+	transition-property: background-color, color
+	transition-duration: calc(.2s * var(--speed))
+	cursor: pointer
+
+	&::after
+		content: ""
+		width: 10px
+		height: 10px
+		border: solid #{colorprops.use(fg-2)}
+		border-width: 2px 2px 0 0
+		transform: rotate(45deg)
+		transition-property: color, transform
+		transition-duration: calc(.2s * var(--speed)), calc(.3s * var(--speed))
+
+	&:hover
+		--Dropdown-Toggle_color: #{colorprops.use(active-soft, (a: .75))}
+
+	&_active
+		background-color: colorprops.use(active-soft, (a: .9))
+
+		&::after
+			transform: rotate($arrow-rotate)
+
+	&_onTop
+		--Dropdown-Toggle_arrowRotate: -45deg

@@ -1,0 +1,16 @@
+@mixin StudentControl {
+	grid-template:
+		" name   tel    " auto
+		" status status " auto
+		" timer  perm   " auto
+		" extend reset  " 40px
+		/ 1fr    1fr    ;
+}
+
+@mixin StudentControl_onCampus {
+	grid-template:
+		" name   tel    " auto
+		" status status " auto
+		" choice choice " 45px
+		/ 1fr    1fr    ;
+}

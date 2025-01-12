@@ -1,0 +1,39 @@
+@use 'sass-color-custom-properties' as colorprops
+
+.Text
+	display: inline
+
+	&_align
+		&_center
+			text-align: center
+		&_right
+			text-align: right
+
+	&_size
+		&_sm
+			font-size: calc(var(--font-size) * .8)
+		&_lg
+			font-size: calc(var(--font-size) * 1.2)
+		&_xl
+			font-size: calc(var(--font-size) * 1.5)
+
+	&_italic
+		font-style: italic
+
+	&_weight
+		&_thin
+			font-weight: 300
+		&_bold
+			font-weight: 700
+
+	&_accent
+		&_low
+			color: colorprops.use(fg, (a: .5))
+		&_normal
+			color: colorprops.use(fg-1)
+		&_high
+			color: colorprops.use(accent)
+		&_on
+			color: colorprops.use(dynamic-on)
+		&_off
+			color: colorprops.use(dynamic-off)

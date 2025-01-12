@@ -1,0 +1,25 @@
+@use 'sass-color-custom-properties' as colorprops
+
+.Dropdown
+	--Dropdown_direction: 1
+	$direction: var(--Dropdown_direction)
+
+	overflow: auto
+	border: 1px solid #{colorprops.use(bg-1)}
+	opacity: 0
+	box-shadow: 0 calc(3px * $direction) 5px 0 #{colorprops.use(shadow, (a: .4))}
+	background-color: colorprops.use(bg)
+	transform: scaleY(0)
+	transform-origin: top
+	transition-property: opacity, transform
+	transition-duration: calc(.2s * var(--speed))
+
+	&_onTop
+		--Dropdown_direction: -1
+
+		transform-origin: bottom
+
+	&_active
+		opacity: 1
+		transform: none
+		pointer-events: auto

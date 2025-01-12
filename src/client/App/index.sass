@@ -1,0 +1,15 @@
+@use 'sass-color-custom-properties' as colorprops
+@use 'colors'
+@use 'tricks'
+
+.App
+	@include colors.App
+	@include tricks.App
+
+	--font-size: 15px
+	--speed: 1
+
+	font-family: Roboto
+	font-size: var(--font-size)
+	background-color: colorprops.use(bg)
+	color: colorprops.use(fg)

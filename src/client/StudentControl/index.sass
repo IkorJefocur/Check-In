@@ -1,0 +1,11 @@
+@use 'grid'
+
+.StudentControl
+	@include grid.StudentControl
+
+	display: grid
+	align-items: center
+	gap: 10px
+
+	&_onCampus
+		@include grid.StudentControl_onCampus

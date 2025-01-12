@@ -1,0 +1,17 @@
+@use 'sass-color-custom-properties' as colorprops
+
+.Dropdown-Item
+	display: grid
+	padding: 10px
+	color: colorprops.use(fg-1)
+	cursor: pointer
+	transition: background-color calc(.3s * var(--speed))
+
+	&:hover
+		background-color: colorprops.use(active-soft)
+
+	&_selected
+		color: colorprops.use(accent)
+
+	& + &
+		border-top: 1px solid #{colorprops.use(bg-1)}

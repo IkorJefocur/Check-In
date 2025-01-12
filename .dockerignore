@@ -1,0 +1,7 @@
+/dist
+/.env
+/.env.example
+/.eslintrc.json
+/.git
+/.gitignore
+/README.md

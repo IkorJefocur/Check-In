@@ -1,0 +1,49 @@
+.LayerSpace-Popup
+	$top: var(--LayerSpace-Popup_top, 0px)
+	$right: var(--LayerSpace-Popup_right, 0px)
+	$bottom: var(--LayerSpace-Popup_bottom, 0px)
+	$left: var(--LayerSpace-Popup_left, 0px)
+
+	--LayerSpace-Popup_rows: #{$top} max-content #{$bottom}
+	--LayerSpace-Popup_columns: #{$left} max-content #{$right}
+
+	position: absolute
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	display: grid
+	grid-template: var(--LayerSpace-Popup_rows) / var(--LayerSpace-Popup_columns)
+	z-index: var(--LayerSpace-Popup_nesting, 0)
+
+	&_horizontalPosition
+
+		&_offset
+			$offset-left: minmax(0, var(--LayerSpace-Popup_left, 1fr))
+			$offset-right: minmax(0, var(--LayerSpace-Popup_right, 1fr))
+
+			--LayerSpace-Popup_columns: #{$offset-left} max-content #{$offset-right}
+
+		&_center
+			$offset-left: minmax(0, max(calc($left * 2 - 100%), 0px))
+			$offset-right: minmax(0, max(calc(100% - $left * 2), 0px))
+
+			--LayerSpace-Popup_columns: #{$offset-left} max-content #{$offset-right}
+
+			justify-content: center
+
+	&_verticalPosition
+
+		&_offset
+			$offset-top: minmax(0, var(--LayerSpace-Popup_top, 1fr))
+			$offset-bottom: minmax(0, var(--LayerSpace-Popup_bottom, 1fr))
+
+			--LayerSpace-Popup_rows: #{$offset-top} max-content #{$offset-bottom}
+
+		&_center
+			$offset-top: minmax(0, max(calc($top * 2 - 100%), 0px))
+			$offset-bottom: minmax(0, max(calc(100% - $top * 2), 0px))
+
+			--LayerSpace-Popup_rows: #{$offset-top} max-content #{$offset-bottom}
+
+			align-content: center
